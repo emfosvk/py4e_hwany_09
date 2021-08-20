@@ -57,3 +57,9 @@ for name in names :
         cnts[name] = cnts.get(name, 0) + 1
 
 print(cnts)
+
+
+#.items() duple 로 각각 꺼내오는 것이 가능
+for (key, value) in cnts.items() :
+    print('전통방식 루프 : ', key, cnts[key])
+    print('duple을 사용한 루프 : ', key, value)

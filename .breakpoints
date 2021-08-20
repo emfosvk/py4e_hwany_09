@@ -12,8 +12,16 @@
       {
         "id": "95a05af7-9e47-4a7d-aded-a0eeb813d320",
         "line": 1,
-        "version": 2329,
+        "version": 2359,
         "index": 0
+      }
+    ],
+    "rosa/chapter09.py": [
+      {
+        "id": "bfdac85f-1d19-4a3a-99f0-9f2d9932d2f4",
+        "line": 64,
+        "version": 1381,
+        "index": 1102
       }
     ]
   }

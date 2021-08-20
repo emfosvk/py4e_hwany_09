@@ -1,1 +1,1 @@
-exec(open("Week5/week5_summary.py").read())
+exec(open("rosa/week6.py").read())
