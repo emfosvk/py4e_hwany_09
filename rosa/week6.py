@@ -251,19 +251,16 @@ def getCponSendVipList (info) :
     
     print('=================== 할인 쿠폰 받을 회원 ===================')
     for infos in cponSendCustmList :
-        print(convertTupleListToText(infos))
+        printStr = ''
+        for i in range(len(infos)) :
+            info = infos[i]
+            printStr += info[0] + ' : ' + info[1]
+            if i < len(infos) - 1 :
+                printStr += ', '
+
+        #당첨자 리스트 출력
+        print(printStr)
     
-    #당첨자 리스트 출력
-    
-def convertTupleListToText(tupleList) :
-    rtnStr = ''
-    for i in range(len(tupleList)) :
-        info = tupleList[i]
-        rtnStr += info[0] + ' : ' + info[1]
-        if i < len(tupleList) - 1 :
-            rtnStr += ', '
-    
-    return rtnStr
 
 
 info = "abc,21세,010-1234-5678,남자,서울,5,cdb,25세,x,남자,서울,4,bbc,30세,010-2222-3333,여자,서울,3,ccb,29세,x,여자,경기,9,dab,26세,x,남자,인천,8,aab,23세,010-3333-1111,여자,경기,10"
