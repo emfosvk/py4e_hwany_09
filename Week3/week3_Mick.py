@@ -181,6 +181,7 @@ def evenPrinter (firstNum,secondNum):
             print(i, '중앙값')
         elif i %2 ==0:
             print(i,'짝수')
+            
 flag = 1
 while flag:
     firstNum = input('첫 번째 수 입력:')

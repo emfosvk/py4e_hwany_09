@@ -41,7 +41,6 @@ for letter in fruit :
 mystring = 'Monty Python'
 # String : M o n t y   P y t h  o  n 
 # index  : 0 1 2 3 4 5 6 7 8 9 10 11
-
 # 종료숫자는 포함하지 않음.
 # mystring[0:4]
 # >> Mont

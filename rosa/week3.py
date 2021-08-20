@@ -20,6 +20,9 @@ print('====================== [START] [Q1] 구구단 ')
 def gugudan(num) : 
     if num >= 1 and num <= 9 : 
         for i in range(1, 10) :
+            # 조건1의 홀수번째만 표기
+            if i % 2 == 0 :
+                continue
             gugudanResult = num * i
             # 조건2의 50이상 미출력 떄문에 조건문 추가
             if gugudanResult < 50 :
