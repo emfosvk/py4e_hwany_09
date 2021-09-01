@@ -27,28 +27,43 @@
 
 print('====================== [START] [Q1] 조선왕 중복 이름 찾기 ')
 
-def duplKings(korea_king, chosun_king) :
+kking = "태조,혜종,정종,광종,경종,성종,목종,현종,덕종,정종,문종,순종,선종,헌종,숙종,예종,인종,의종,명종,신종,희종,강종,고종,원조,충렬왕,충선왕,충숙왕,충혜왕,충목왕,충정왕,공민왕,우왕,창왕,공양왕"
+cking = "태조,정종,태종,세종,문종,단종,세조,예종,성종,연산군,중종,인종,명종,선조,광해군,인조,효종,현종,숙종,경종,영조,정조,순조,헌종,철종,고종,순종"
 
-    koreaKingList = korea_king.split(',')
-    chosunKingList = chosun_king.split(',')
-    duplKings = []
-
-    for koreaKing in koreaKingList :
-        # 고려와 조선왕 비교 동시에, 이미 나온 결과에 중복되는 값이 있는지 체크
-        if koreaKing in chosunKingList and koreaKing not in duplKings :
-            # 없으면 값 추가
-            duplKings.append(koreaKing)
-
-    for duplKing in duplKings :
-        print('조선과 고려에 모두있는 왕 : ', duplKing)
-    
-    print('조선과 고려에 모두 있는 왕 이름은 총', len(duplKings), '개 입니다.')
+def king(kking, cking) :
+  # step 1.--------------------------------
+  counts = {}
+  countsDouble = []
+  # ---------------------------------------
 
 
-korea_king = "태조,혜종,정종,광종,경종,성종,목종,현종,덕종,정종,문종,순종,선종,헌종,숙종,예종,인종,의종,명종,신종,희종,강종,고종,원조,충렬왕,충선왕,충숙왕,충혜왕,충목왕,충정왕,공민왕,우왕,창왕,공양왕"
-chosun_king = "태조,정종,태종,세종,문종,단종,세조,예종,성종,연산군,중종,인종,명종,선조,광해군,인조,효종,현종,숙종,경종,영조,정조,순조,헌종,철종,고종,순종"
+  # step 2.--------------------------------
+  kkingSplit = kking.split(",")
+  ckingSplit = cking.split(",")
+  # ---------------------------------------
 
-duplKings(korea_king, chosun_king)
+  # step 3, 4. ----------------------------
+  for name in kkingSplit :
+    counts[name] = counts.get(name, 0) + 1
+
+  for name in ckingSplit :
+    counts[name] = counts.get(name, 0) + 10000
+  # ---------------------------------------
+
+  # step 5.--------------------------------
+  for key in counts :
+    if len(str(counts[key])) >= 5 :
+      if int(str(counts[key])[-4:]) >= 1 :
+        countsDouble.append(key)
+  # ---------------------------------------
+
+  # step 6.--------------------------------
+  for name in countsDouble : 
+    print('고려와 조선에 모두 있는 왕 이름 :', name)
+  print('조선과 고려에 모두 있는 왕 이름은 총', len(countsDouble), '개 입니다.')
+  # ---------------------------------------
+
+king(kking,cking)
 
 print('====================== [E N D] [Q1] 조선왕 중복 이름 찾기 ')
 
@@ -72,6 +87,10 @@ print('====================== [E N D] [Q1] 조선왕 중복 이름 찾기 ')
 #면담 대상자 갑순이
 
 print('====================== [START] [Q2] 실적 계산기 - 포상/면담 대상 추출 ')
+
+print('')
+print('Q2-1')
+print('')
 
 def sales_management(member_names, member_records) :
     
@@ -115,6 +134,38 @@ member_records = [[4,5,3,5,6,5,3,4,1,3,4,5],[2,3,4,3,1,2,0,3,2,5,7,2],
 
 sales_management(member_names, member_records)
 
+import operator
+print('')
+print('Q2-2')
+print('')
+
+member_names = ["갑돌이", "갑순이", "을돌이", "을순이", "병돌이", "병순이"]
+member_records = [[4,5,3,5,6,5,3,4,1,3,4,5],[2,3,4,3,1,2,0,3,2,5,7,2],
+           [1,3,0,3,3,4,5,6,7,2,2,1],[3,2,9,2,3,5,6,6,4,6,9,9],
+           [8,7,7,5,6,7,5,8,8,6,10,9],[7,8,4,9,5,10,3,3,2,2,1,3]]
+
+def resultChecker(names,records):
+    bonusNum = 2
+    interviewNum =2
+    for i in range(len(records)):
+        target=records.pop()
+        avg=sum(target)/len(target)
+        records.insert(0,avg)
+
+    members={name:record for name,record in zip(names,records)}
+    sMembers=sorted(members.items(),key=operator.itemgetter(1),reverse=True)
+
+    for j in range(bonusNum) :
+        if sMembers[j][1] > 5:
+            print('보너스 대상자',sMembers[j][0])
+    print('')
+
+    for k in range(interviewNum):
+        if sMembers[len(sMembers) - k -1][1] <= 3:
+            print('면담 대상자',sMembers[len(sMembers) - k -1][0])
+
+
+resultChecker(member_names,member_records)
 print('====================== [E N D] [Q2] 실적 계산기 - 포상/면담 대상 추출 ')
 
 
@@ -134,6 +185,10 @@ print('====================== [E N D] [Q2] 실적 계산기 - 포상/면담 대�
 #삼성전자의 수익률 -3.53
 
 print('====================== [START] [Q3] 주식 수익률 계산기 ')
+
+print('')
+print('Q3-1')
+print('')
 
 def stock_profit(stocks, sells) :
     returnRates = []
@@ -155,6 +210,35 @@ def stock_profit(stocks, sells) :
 stocks = "삼성전자/10/85000,카카오/15/130000,LG화학/3/820000,NAVER/5/420000"
 sells = [82000, 160000, 835000, 410000]
 stock_profit(stocks, sells)
+
+print('')
+print('Q3-2')
+print('')
+
+
+stocks = "삼성전자/10/85000,카카오/15/130000,LG화학/3/820000,NAVER/5/420000"
+sells = [82000, 160000, 835000, 410000]
+def profitCalculator (stocksL,sellL):
+    stocksDict = dict()
+    cnt=0
+
+    stocksList=stocks.split(',')
+
+    for item in stocksList:
+        stockSep=item.split('/')
+        stocksDict[stockSep[0]]=int(stockSep[2])
+
+    for stock in stocksDict:
+        profit=((sells[cnt]-stocksDict[stock])/stocksDict[stock])*100
+        cnt+=1
+        stocksDict[stock]=round(profit,2)
+
+    sStocksDict=sorted(stocksDict.items(),key=operator.itemgetter(1),reverse=True)
+
+    for name,profit in sStocksDict:
+        print(name,'의 수익률은 ',profit,'%',sep='')
+
+profitCalculator(stocks,sells)
 
 print('====================== [E N D] [Q3] 주식 수익률 계산기 ')
 

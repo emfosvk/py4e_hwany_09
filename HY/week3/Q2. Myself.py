@@ -21,7 +21,6 @@
 #컴퓨터의 전적: 0승 0무 2패
 
 import random
-CompRsp = random.randint(0, 2)#0=가위, 1=바위, 2=보
 
 print('============[업그레이드 가위바위보 게임][START]============')
 
@@ -39,6 +38,8 @@ def Advanced_Rsp(number) :
   while GameRound < numberint :
 
     UserRsp = input('무엇을 낼까요?("가위", "바위", "보" 중에서 하나를 입력하세요.)')
+    CompRsp = random.randint(0, 2)#0=가위, 1=바위, 2=보
+
     GameRound += 1
 
     if UserRsp == '가위' and CompRsp == 0 :
